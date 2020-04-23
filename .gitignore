@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+
+# VisualMicro
+__vm/
+[Dd]ebug/
+*.DotSettings*
+arduino folders read me.txt
+*.user
