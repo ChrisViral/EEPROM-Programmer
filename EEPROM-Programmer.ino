@@ -27,6 +27,7 @@ void setup()
 	//Serial debugging
 	Serial.begin(57600);
 
+	clear();
 	writeData(displayData, 16);
 	printContents();
 }
@@ -59,7 +60,7 @@ void setAddress(const ushort address)
 
 	//Latch value by pulsing latch clock
 	digitalWrite(LATCH_CLOCK, HIGH);
-	delayMicroseconds(10);
+	delayMicroseconds(5);
 	digitalWrite(LATCH_CLOCK, LOW);
 }
 
@@ -85,6 +86,7 @@ void writeAtAddress(const ushort address, byte value)
 	setOutputEnable(false);
 	setDataPinModes(OUTPUT);
 
+	//Get most significant bit for data polling
 	byte msb = value >> 7;
 
 	//Write data to pins
@@ -98,14 +100,16 @@ void writeAtAddress(const ushort address, byte value)
 	digitalWrite(WRITE_ENABLE, LOW);
 	delayMicroseconds(1);
 	digitalWrite(WRITE_ENABLE, HIGH);
-	delay(1);
 
-	//Wait for write cycle end
+	//Tested extensively, this comes out to be the average write time and causes the less average polling cycles
+	delayMicroseconds(2240);
+
+	//Wait for write cycle end by checking with data polling
 	setDataPinModes(INPUT);
 	setOutputEnable(true);
 	while (digitalRead(DATA7) != msb)
 	{
-		delay(1);
+		delayMicroseconds(10);
 	}
 }
 
@@ -137,11 +141,21 @@ void printContents(ushort lines)
 		for (ushort j = 0; j < stride; j++)
 		{
 			//Write byte
-			length += sprintf(buffer + length, length == 7 ? " %02X " : " %02X", readAtAddress(i + j));
+			length += sprintf(buffer + length, j == 7 ? " %02X " : " %02X", readAtAddress(i + j));
 		}
 
 		//Endline
 		Serial.println(buffer);
 		delete buffer;
+	}
+}
+
+void clear(ushort bytes)
+{
+	//Go through the memory and set all bytes to 0xFF
+	bytes = min(bytes, SIZE);
+	for (ushort address = 0; address < bytes; address++)
+	{
+		writeAtAddress(address, 0xFF);
 	}
 }

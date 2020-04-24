@@ -37,3 +37,4 @@ __vm/
 *.DotSettings*
 arduino folders read me.txt
 *.user
+.vs/

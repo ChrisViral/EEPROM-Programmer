@@ -107,11 +107,7 @@
     <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="EEPROM-Programmer.ino">
-      <FileType>CppCode</FileType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="EEPROM-Programmer.ino" />
     <None Include="src\arduino folders read me.txt">
     </None>
   </ItemGroup>

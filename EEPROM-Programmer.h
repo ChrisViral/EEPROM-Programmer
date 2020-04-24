@@ -85,4 +85,10 @@ static void writeData(byte data[], int size);
  * \param lines How many lines of 16 bytes to print, between 1 and 128, defaults to 16
  */
 static void printContents(ushort lines = 16);
+
+/**
+ * \brief Clears the memory of the EEPROM by resetting every address to it's default, 0xFF
+ * \param bytes Amount of bytes to clear, defaults to 256, with a maximum of 2048
+ */
+static void clear(ushort bytes = 256);
 #pragma endregion
