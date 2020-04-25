@@ -112,8 +112,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EEPROM-Programmer.h" />
+    <ClInclude Include="DecoderProgrammer.h" />
+    <ClInclude Include="Pins.h" />
+    <ClInclude Include="Programmer.h" />
     <ClInclude Include="__vm\.EEPROM-Programmer.vsarduino.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DecoderProgrammer.cpp" />
+    <ClCompile Include="Programmer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

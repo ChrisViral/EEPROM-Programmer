@@ -24,8 +24,22 @@
     <ClInclude Include="__vm\.EEPROM-Programmer.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EEPROM-Programmer.h">
+    <ClInclude Include="Programmer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Pins.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DecoderProgrammer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Programmer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DecoderProgrammer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
